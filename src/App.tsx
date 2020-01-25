@@ -2,11 +2,14 @@ import React, {useState} from 'react'
 import { BrowserRouter, Route, Link } from "react-router-dom"
 import './App.css'
 import modules from './modules'
+import Header from './components/shared/header/header'
+import Footer from './components/shared/footer/footer'
 
 const App: React.FC = () => {
   const [currentTab, setCurrentTab] = useState('dashboard');
   return (
     <BrowserRouter>
+      <Header/>
       <div className="App">
           <header className="App-headser">
             <ul className="App-nav">
@@ -23,6 +26,7 @@ const App: React.FC = () => {
               ))}
           </div>
         </div>
+        <Footer/>
     </BrowserRouter>
   );
 }
