@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './header.css'
 import {Navbar, Nav, Button, NavDropdown, Form, FormControl} from 'react-bootstrap'
+import UserContext from '../../../context/context'
 
 
 const Header = () => {
+    const user = useContext(UserContext)
+    console.log(user)
     return(
         <div>
             <Navbar bg="light" expand="lg">
@@ -11,14 +14,13 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                    <Nav.Link href="/dashboard">Home</Nav.Link>
+                    <Nav.Link href="/games">Games</Nav.Link>
+                    <NavDropdown title="More" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="/analytics">Analytics</NavDropdown.Item>
+                        <NavDropdown.Item href="/users">Users</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <NavDropdown.Item href="/separatedLink">Separated link</NavDropdown.Item>
                     </NavDropdown>
                     </Nav>
                     <Form inline>

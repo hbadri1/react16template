@@ -1,33 +1,27 @@
-import React, {useState} from 'react'
-import { BrowserRouter, Route, Link } from "react-router-dom"
+import React from 'react'
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import './App.css'
 import modules from './modules'
 import Header from './components/shared/header/header'
 import Footer from './components/shared/footer/footer'
+import { UserProvider } from './context/context'
 
 const App: React.FC = () => {
-  const [currentTab, setCurrentTab] = useState('dashboard');
+  const user = {username: 'user1', loggedIn: true}
   return (
-    <BrowserRouter>
-      <Header/>
-      <div className="App">
-          <header className="App-headser">
-            <ul className="App-nav">
-              {modules.map(module => ( // with a name, and routes
-                  <li key={module.name} className={currentTab === module.name ? 'active' : ''}>
-                    <Link to={module.routeProps.path} onClick={() => setCurrentTab(module.name)}>{module.name}</Link>
-                  </li>
-              ))}
-            </ul>
-          </header>
-          <div className="App-content">
-              {modules.map(module => (
-                <Route {...module.routeProps} key={module.name} />
-              ))}
-          </div>
-        </div>
+    <UserProvider value={user}>
+      <BrowserRouter>
+        <Header/>
+        <Switch>
+          {
+            modules.map((m, idx) =>
+              (<Route exact path={m.routeProps.path} component={m.routeProps.component} key={idx}></Route>)
+            )
+          }
+        </Switch>
         <Footer/>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
