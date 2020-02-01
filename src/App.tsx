@@ -4,14 +4,13 @@ import './App.css'
 import modules from './modules'
 import Header from './components/shared/header/header'
 import Footer from './components/shared/footer/footer'
-import { UserProvider } from './context/userContext'
-import { ThemeProvider } from './context/themeContext'
 import { LangProvider } from './context/langContext'
+import { AuthProvider } from './context/authContext'
 
 const App: React.FC = () => {
-  const user = {username: 'user1', loggedIn: true}
   return (
       <LangProvider>
+        <AuthProvider>
           <BrowserRouter>
             <Header/>
             <Switch>
@@ -23,6 +22,7 @@ const App: React.FC = () => {
             </Switch>
             <Footer/>
           </BrowserRouter>
+        </AuthProvider>
       </LangProvider>
   );
 }

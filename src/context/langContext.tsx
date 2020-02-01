@@ -1,4 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react'
+import en from '../i18n/en'
+import fr from '../i18n/fr'
+import ar from '../i18n/ar'
 
 interface IContextProps {
     lang: string,
@@ -12,6 +15,7 @@ const LangContext = React.createContext({} as IContextProps)
 export default LangContext
 
 export const LangProvider = (props: any) => {
+
     const [lang, setLang] = useState(window.localStorage.getItem('appUILang') || window.navigator.language)
 
     useLayoutEffect(()=>{
@@ -30,25 +34,12 @@ export const LangProvider = (props: any) => {
     return(
         <LangContext.Provider value={{
             lang,
-            currentLangData: langData[lang],
+            currentLangData: lang === 'en-SA' ? en : ar,
             switchLang
         }}>
             {props.children}
         </LangContext.Provider>
     )
 }
-const langData: any = {
-    'en-SA': {
-        HOME: 'Home',
-        LANG: 'Language'
-    },
-    'fr-SA': {
-        HOME: 'Principale',
-        LANG: 'Langue'
-    },
-    'ar-SA': {
-        HOME: 'الرئيسية',
-        LANG: 'اللغة'
-    }
-}
+
 export const LangConsumer = LangContext.Consumer
