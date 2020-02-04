@@ -6,10 +6,12 @@ const Users = () => {
     )
 }
 
-export default {
-    routeProps: {
-        path: '/users',
-        component: Users
-    },
-    name: 'Users'
-}
+export default [
+    {
+        routeProps: {
+            path: '/users',
+            component: Users
+        },
+        name: 'Users'
+    }
+]

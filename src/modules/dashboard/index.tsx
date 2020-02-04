@@ -6,11 +6,13 @@ const Dashboard = () => {
     )
 }
 
-export default {
-    routeProps: { //To be passed to react-router
-        path: '/dashboard',
-        exact: true,
-        component: Dashboard
-    },
-    name: 'Dashboard'
-}
+export default [
+    {
+        routeProps: { //To be passed to react-router
+            path: '/dashboard',
+            exact: true,
+            component: Dashboard
+        },
+        name: 'Dashboard'
+    }
+]

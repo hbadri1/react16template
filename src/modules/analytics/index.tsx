@@ -6,10 +6,12 @@ const Analytics = () => {
     )
 }
 
-export default {
-    routeProps: {
-        path: '/analytics',
-        component: Analytics
-    },
-    name: 'Analytics'
-}
+export default [
+    {
+        routeProps: {
+            path: '/analytics',
+            component: Analytics
+        },
+        name: 'Analytics'
+    }
+]

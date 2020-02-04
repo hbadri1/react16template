@@ -15,9 +15,11 @@ const App: React.FC = () => {
             <Header/>
             <Switch>
               {
-                modules.map((m, idx) =>
-                  (<Route exact path={m.routeProps.path} component={m.routeProps.component} key={idx}></Route>)
-                )
+                modules.map((m: any[]) => {
+                  return m.map((subm, idx: number) => {
+                    return (<Route exact path={subm.routeProps.path} component={subm.routeProps.component} key={idx}></Route>)
+                  })
+                })
               }
             </Switch>
             <Footer/>

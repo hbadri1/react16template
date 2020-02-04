@@ -6,10 +6,12 @@ const Games = () => {
     )
 }
 
-export default {
-    routeProps: {
-        path: '/games',
-        component: Games
-    },
-    name: 'Games'
-}
+export default [
+    {
+        routeProps: {
+            path: '/games',
+            component: Games
+        },
+        name: 'Games'
+    }
+]

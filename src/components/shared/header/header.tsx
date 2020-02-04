@@ -26,6 +26,10 @@ const Header = () => {
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/separatedLink">Separated link</NavDropdown.Item>
                         </NavDropdown>
+                        <NavDropdown title="Login" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                            <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                     <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
