@@ -1,34 +1,26 @@
 import React from 'react'
-import {Button, Form, Container, Row, Col} from 'react-bootstrap'
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { useForm } from 'react-hook-form';
 
 const Login = (props: any) => {
-    return(
-        <Container>
-            <Row className="justify-content-md-center">
-                <Col md={8}>
-                    <Form>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
-                            <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                            </Form.Text>
-                        </Form.Group>
+    const {register, handleSubmit, errors} = useForm()
 
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+    const onSubmit = (data: any) => {
+        console.log(data)
+    }
+    return(
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <FormGroup>
+                <Label for="exampleEmail">Email</Label>
+                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" innerRef={register({ required: true })}/>
+                {errors.email ? <span>hello</span> : null}
+            </FormGroup>
+            <FormGroup>
+                <Label for="examplePassword">Password</Label>
+                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" innerRef={register({ required: true })} />
+            </FormGroup>
+            <Button>Submit</Button>
+        </Form>
     )
 }
 
